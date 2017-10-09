@@ -28,8 +28,6 @@ makeCacheMatrix <- function(x = matrix()) {
        list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)
 }
 
-
-
 ## CacheSolve will calculate the inverse matrix and set/retrieve it to/from the parent environment, and will return a matrix that 
 ## is the inverse of 'x'.
 
