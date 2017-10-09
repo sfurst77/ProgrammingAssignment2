@@ -1,8 +1,10 @@
-## These two functions below enable the caching of the inverse of a matrix in order to reduce repeated computation, making code faster and more efficient.
+## These two functions below enable the caching of the inverse of a matrix in order to reduce repeated computation, making code faster
+## and more efficient. 
 
-## The MakeCacheMatrix function will set up a matrix 'x' with the following four functions in its environment: set, get, setinverse, and getinverse.
-## It is best to place the result of this function call in a new matrix, i.e. b <- makeCacheMatrix(a), where a <- matrix(1:10, nrow = 2, ncol = 5). Then, the $ operator will will work with all four functions.
-## These four functions will interact with the cacheSolve function below.
+## The MakeCacheMatrix function will set up a matrix 'x' with the following four functions in its environment: set, get, setinverse, 
+## and getinverse. It is best to place the result of this function call in a new matrix, i.e. b <- makeCacheMatrix(a), where 
+## a <- matrix(1:10, nrow = 2, ncol = 5). Then, the $ operator will will work with all four functions. These four functions will 
+## interact with the cacheSolve function below.
 
 makeCacheMatrix <- function(x = matrix()) {
     
@@ -21,14 +23,15 @@ makeCacheMatrix <- function(x = matrix()) {
        ## can set inverse to z
        setinverse <- function(z = matrix())  inverse <<- z  
        
-       
-       getinverse <- function() inverse             
+       getinverse <- function() inverse  
+    
        list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)
 }
 
 
 
-## CacheSolve will calculate the inverse matrix and set/retrieve it to/from the parent environment, and will return a matrix that is the inverse of 'x'.
+## CacheSolve will calculate the inverse matrix and set/retrieve it to/from the parent environment, and will return a matrix that 
+## is the inverse of 'x'.
 
 cacheSolve <- function(x, ...) {
       inverse <- x$getinverse()
@@ -43,3 +46,4 @@ cacheSolve <- function(x, ...) {
 ## a <- matrix(c(1,2,7,6,5,4,3,9,7), nrow=3, ncol=3)
 ## b <- makeCacheMatrix(a)
 ## cacheSolve(b)
+## cacheSolve(b) - second time will show "getting cached data"
